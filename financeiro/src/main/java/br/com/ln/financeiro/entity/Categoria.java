@@ -8,13 +8,16 @@ import javax.persistence.Id;
 import lombok.Data;
 
 @Entity
-public @Data class Entidade {
+public @Data class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String name;
-		
+	private String descricao;
+	
+	private Categoria agrupador;
+	
+	private TipoOperacaoEnum tipoOperacao;
 
 }
