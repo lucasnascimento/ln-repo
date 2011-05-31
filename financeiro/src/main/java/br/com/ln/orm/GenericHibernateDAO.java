@@ -28,15 +28,15 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
 		return persistentClass;
 	}
 
-	public T findById(ID id) {
+	public T load(ID id) {
 		return (T) getSession().load(getPersistentClass(), id);
 	}
 
-	public List<T> findAll() {
+	public List<T> listAll() {
 		return findByCriteria();
 	}
 
-	public List<T> findByExample(T exampleInstance) {
+	public List<T> listByExample(T exampleInstance) {
 		return findByExample(exampleInstance, null);
 	}
 
@@ -53,13 +53,26 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
 		return crit.list();
 	}
 
-	public T makePersistent(T entity) {
+	public T saveOrUpdate(T entity) {
+		validate();
 		getSession().saveOrUpdate(entity);
 		return entity;
 	}
+	
+	public T saveOrUpdate() {
+		validate();
+		getSession().saveOrUpdate(this);
+		return (T) this;
+	}
+	
+	public abstract boolean validate();
 
-	public void makeTransient(T entity) {
+	public void delete(T entity) {
 		getSession().delete(entity);
+	}
+
+	public void delete() {
+		getSession().delete(this);
 	}
 
 	public void flush() {

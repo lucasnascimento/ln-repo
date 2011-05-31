@@ -23,8 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.ln.financeiro.entity.Entidade;
-import br.com.ln.orm.GenericDAO;
-import br.com.ln.orm.GenericHibernateDAO;
+import br.com.ln.financeiro.entity.Login;
 
 @ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,14 +31,22 @@ public class GenericHibernateDAOTest {
 
 //	@PersistenceContext
 //	private EntityManager entityManager;
-	
-	private static GenericDAO<Entidade, Long> entidadeDAO = new GenericHibernateDAO<Entidade, Long>() {
-	};
-	
 
 	@Test
 	@Transactional
-	public void testSaveOrderWithItems() throws Exception {
+	public void testSaveOrUpdate() throws Exception {
+		
+		Entidade entidade = new Entidade();
+		entidade.setName("Entidade Teste 1");
+		Login login = new Login();
+		login.setEmail("na@email.com");
+		login.setLogin("usario1");
+		login.setSenha("HASH_TO_PASSAWORD");
+		entidade.setLogin(login);
+		entidade.saveOrUpdate();
+		
+		
+	
 //		Order order = new Order();
 //		order.getItems().add(new Item());
 //		entityManager.persist(order);

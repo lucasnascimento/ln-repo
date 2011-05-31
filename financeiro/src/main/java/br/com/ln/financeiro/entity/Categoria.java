@@ -7,10 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import br.com.ln.orm.GenericHibernateDAO;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
-public @Data class Categoria {
+@EqualsAndHashCode(callSuper=true)
+public @Data class Categoria extends GenericHibernateDAO<Categoria, Long> {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -23,5 +27,10 @@ public @Data class Categoria {
 
 	@Enumerated
 	private TipoOperacaoEnum tipoOperacao;
+
+	
+	public boolean validate() {
+		return true;
+	}
 
 }

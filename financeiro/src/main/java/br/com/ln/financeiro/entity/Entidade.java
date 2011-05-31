@@ -11,9 +11,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import br.com.ln.orm.GenericHibernateDAO;
 
 @Entity
-public @Data class Entidade {
+@EqualsAndHashCode(callSuper=true)
+public @Data class Entidade extends GenericHibernateDAO<Entidade, Long> {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,5 +29,10 @@ public @Data class Entidade {
 	
 	@OneToOne
 	private Login login;
+
+	@Override
+	public boolean validate() {
+		return true;
+	}
 
 }
