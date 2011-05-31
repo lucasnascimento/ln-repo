@@ -5,6 +5,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import br.com.ln.orm.GenericHibernateDAO;
@@ -27,7 +28,9 @@ public @Data class Categoria extends GenericHibernateDAO<Categoria, Long> {
 
 	@Enumerated
 	private TipoOperacaoEnum tipoOperacao;
-
+	
+	@ManyToOne
+	private Entidade entidade;
 	
 	public boolean validate() {
 		return true;

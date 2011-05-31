@@ -27,6 +27,9 @@ public @Data class Entidade extends GenericHibernateDAO<Entidade, Long> {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Conta> contas;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Categoria> categorias;
+	
 	@OneToOne
 	private Login login;
 
