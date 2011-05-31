@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import br.com.ln.financeiro.enums.TipoOperacaoEnum;
 import br.com.ln.orm.GenericHibernateDAO;
 
 import lombok.Data;

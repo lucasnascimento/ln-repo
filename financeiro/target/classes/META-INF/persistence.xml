@@ -6,8 +6,12 @@
 	<persistence-unit name="financeiroUP"
 		transaction-type="RESOURCE_LOCAL">
 
-		<class></class>
-		<class>br.tool.dfa.Order</class>
+		<class>br.com.ln.financeiro.entity.CartaoCredito</class>
+		<class>br.com.ln.financeiro.entity.Categoria</class>
+		<class>br.com.ln.financeiro.entity.Conta</class>
+		<class>br.com.ln.financeiro.entity.Entidade</class>
+		<class>br.com.ln.financeiro.entity.Lancamento</class>
+		<class>br.com.ln.financeiro.entity.Login</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 	</persistence-unit>
