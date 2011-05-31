@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -20,8 +21,10 @@ public @Data class Lancamento {
 	
 	private String descritivo;
 	
+	@ManyToOne
 	private Conta conta;
 	
+	@ManyToOne
 	private Categoria categoria;
 	
 	private float valor;
